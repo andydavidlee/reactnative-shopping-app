@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
 		borderTopRightRadius: 10,
 	},
 	touchable: {
-		overflow: 'hidden',
 		borderRadius: 10,
+		overflow: 'hidden',
 	},
 	image: {
 		width: '100%',

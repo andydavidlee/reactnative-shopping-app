@@ -1,20 +1,32 @@
+// Central app component
+
+// import modules
 import React, { useState } from 'react'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
+// Modules for fonts
 import AppLoading from 'expo-app-loading'
 import * as Font from 'expo-font'
 
+// Import Reducer
 import productsReducer from './store/reducers/products'
+import cartReducer from './store/reducers/cart'
+
+// Import Navigation
 import ShopNavigator from './navigation/ShopNavigator'
 
+// Combining reducers in to a central or 'root' reducer. Another term I have heard in connection is 'state sclices'
 const rootReducer = combineReducers({
 	products: productsReducer,
+	cart: cartReducer,
 })
 
+// root reducer is centralised into the store.
 const store = createStore(rootReducer, composeWithDevTools()) //Remember to remove the second argument as the module is only for dev environment
 
+// async function returning a promise
 const fetchFonts = () => {
 	return Font.loadAsync({
 		'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
