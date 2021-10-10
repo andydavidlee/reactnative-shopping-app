@@ -13,6 +13,7 @@ import * as Font from 'expo-font'
 // Import Reducer
 import productsReducer from './store/reducers/products'
 import cartReducer from './store/reducers/cart'
+import ordersReducer from './store/reducers/orders'
 
 // Import Navigation
 import ShopNavigator from './navigation/ShopNavigator'
@@ -21,6 +22,7 @@ import ShopNavigator from './navigation/ShopNavigator'
 const rootReducer = combineReducers({
 	products: productsReducer,
 	cart: cartReducer,
+	orders: ordersReducer,
 })
 
 // root reducer is centralised into the store.
