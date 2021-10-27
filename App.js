@@ -18,8 +18,7 @@ import ordersReducer from './store/reducers/orders'
 import authReducer from './store/reducers/auth'
 
 // Import Navigation
-import ShopNavigator from './navigation/ShopNavigator'
-
+import NavigationContainer from './navigation/NavigationContainer'
 // Combining reducers in to a central or 'root' reducer. Another term I have heard in connection is 'state sclices'
 const rootReducer = combineReducers({
 	products: productsReducer,
@@ -57,7 +56,7 @@ export default function App() {
 	}
 	return (
 		<Provider store={store}>
-			<ShopNavigator />
+			<NavigationContainer />
 		</Provider>
 	)
 }
