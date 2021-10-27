@@ -1,5 +1,13 @@
 import React from 'react'
-import { FlatList, Button, Platform, Alert } from 'react-native'
+import {
+	View,
+	Text,
+	StyleSheet,
+	FlatList,
+	Button,
+	Platform,
+	Alert,
+} from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 
@@ -18,7 +26,7 @@ const UserProductsScreen = (props) => {
 	}
 
 	const deleteHandler = (id) => {
-		Alert.alert('Areyou sure?', 'Do you really want to delete this item?', [
+		Alert.alert('Are you sure?', 'Do you really want to delete this item?', [
 			{ text: 'No', style: 'default' },
 			{
 				text: 'yes',
@@ -30,10 +38,17 @@ const UserProductsScreen = (props) => {
 		])
 	}
 
+	if (userProducts.length === 0) {
+		return (
+			<View style={styles.notFound}>
+				<Text style={styles.notFoundText}>No Products Found</Text>
+			</View>
+		)
+	}
 	return (
 		<FlatList
 			data={userProducts}
-			keyExtractor={(itemData) => itemData.id}
+			keyExtractor={(item) => item.id}
 			renderItem={(itemData) => (
 				<ProductItem
 					image={itemData.item.imageUrl}
@@ -87,5 +102,17 @@ UserProductsScreen.navigationOptions = (navData) => {
 		),
 	}
 }
+
+const styles = StyleSheet.create({
+	notFound: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+	},
+	notFoundText: {
+		fontFamily: 'open-sans-bold',
+		fontSize: 20,
+	},
+})
 
 export default UserProductsScreen

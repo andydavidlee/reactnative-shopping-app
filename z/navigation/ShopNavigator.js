@@ -1,25 +1,26 @@
 import React from 'react'
+import {
+	createStackNavigator,
+	createDrawerNavigator,
+	createSwitchNavigator,
+	createAppContainer,
+} from 'react-navigation'
 import { Platform } from 'react-native'
-
-import { createAppContainer, createSwitchNavigator } from 'react-navigation'
-import { createStackNavigator } from 'react-navigation-stack'
-import { createDrawerNavigator } from 'react-navigation-drawer'
+import { Ionicons } from '@expo/vector-icons'
 
 import ProductsOverviewScreen from '../screens/shop/ProductsOverviewScreen'
-import ProductDetailsScreen from '../screens/shop/ProductDetailsScreen'
+import ProductDetailScreen from '../screens/shop/ProductDetailScreen'
 import CartScreen from '../screens/shop/CartScreen'
 import OrdersScreen from '../screens/shop/OrdersScreen'
 import UserProductsScreen from '../screens/user/UserProductsScreen'
-import EditProductScreen from '../screens/user/EditProductsScreen'
+import EditProductScreen from '../screens/user/EditProductScreen'
 import AuthScreen from '../screens/user/AuthScreen'
-import StartUpScreen from '../screens/StartUpScreen'
-
+import StartupScreen from '../screens/StartupScreen'
 import Colors from '../constants/Colors'
-import { Ionicons } from '@expo/vector-icons'
 
 const defaultNavOptions = {
 	headerStyle: {
-		backgroundColor: Platform.OS === 'android' ? Colors.primary : ' ',
+		backgroundColor: Platform.OS === 'android' ? Colors.primary : '',
 	},
 	headerTitleStyle: {
 		fontFamily: 'open-sans-bold',
@@ -33,7 +34,7 @@ const defaultNavOptions = {
 const ProductsNavigator = createStackNavigator(
 	{
 		ProductsOverview: ProductsOverviewScreen,
-		ProductDetails: ProductDetailsScreen,
+		ProductDetail: ProductDetailScreen,
 		Cart: CartScreen,
 	},
 	{
@@ -104,11 +105,13 @@ const AuthNavigator = createStackNavigator(
 	{
 		Auth: AuthScreen,
 	},
-	{ defaultNavigationOptions: defaultNavOptions }
+	{
+		defaultNavigationOptions: defaultNavOptions,
+	}
 )
 
 const MainNavigator = createSwitchNavigator({
-	StartUp: StartUpScreen,
+	Startup: StartupScreen,
 	Auth: AuthNavigator,
 	Shop: ShopNavigator,
 })
